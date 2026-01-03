@@ -2,7 +2,7 @@
 
 Una aplicación simple para ver el clima de las principales ciudades chilenas. Nada del otro mundo, pero funciona.
 
-**[Repositorio en GitHub](https://github.com/TuUsuario/weather-frontend-m2)**
+**[Repositorio en GitHub](https://github.com/simonapg/weather-frontend-m2)**
 
 ## Cómo usarla
 
