@@ -1,0 +1,444 @@
+/* 🎨 MINIMALISTA PURO - ClimaMundo v3.0 */
+/* Diseño limpio, espacios en blanco generosos, colores sólidos */
+
+:root {
+  --primary: #2c3e50;
+  --accent: #e74c3c;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --bg-light: #f8f9fa;
+  --border: #e0e0e0;
+  --radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: var(--text-dark);
+}
+
+main {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+/* Navbar minimalista */
+nav.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary) !important;
+  margin-right: 2rem;
+}
+
+.navbar-brand strong {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* Footer minimalista */
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--border);
+  color: var(--text-light);
+  padding: 2rem 0 1rem;
+  margin-top: auto;
+}
+
+footer h5 {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--primary);
+}
+
+footer .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+}
+
+footer .social-icons a:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* Cards de ciudades - Minimalistas */
+.ciudad-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  cursor: pointer !important;
+}
+
+.ciudad-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.clima-icono {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+
+.temperatura {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.ciudad-card .card-body {
+  padding: 1.5rem;
+}
+
+#ciudadesContainer {
+  min-height: 60vh;
+}
+
+/* Página de Detalle */
+#detalleContainer {
+  min-height: 60vh;
+}
+
+#detalleHeader {
+  background-color: var(--primary);
+  color: white;
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#detalleHeader h1 {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  font-size: 2rem;
+}
+
+#detalleHeader .lead {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+#detalleActual .card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#detalleActual .card-body {
+  padding: 1.5rem;
+}
+
+#pronósticoContainer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+#pronósticoContainer h3 {
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+#pronósticoContainer .card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+#pronósticoContainer .card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Botones minimalistas */
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+}
+
+.btn-outline-primary {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e8e8e8;
+  transform: translateY(-1px);
+}
+
+/* Hero section minimalista */
+.hero-section {
+  background-color: var(--primary);
+  color: white;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.hero-section h2 {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  font-size: 2.2rem;
+}
+
+.hero-section p {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Utilidades */
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-secondary {
+  color: var(--text-light) !important;
+}
+
+.text-muted {
+  color: var(--text-light) !important;
+}
+
+/* Cards generales */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.card-text {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+  border-color: var(--border);
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-section p {
+    font-size: 0.95rem;
+  }
+
+  main {
+    padding: 1rem 0;
+  }
+
+  #detalleHeader {
+    padding: 1.5rem;
+  }
+
+  #detalleHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .ciudad-card {
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    padding: 1.5rem 0 1rem;
+  }
+
+  footer h5 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .ciudad-card .display-4 {
+    font-size: 1.5rem !important;
+  }
+
+  .clima-icono {
+    font-size: 2rem !important;
+  }
+
+  #detalleActual .card-body {
+    padding: 1.2rem 1rem;
+  }
+
+  #detalleHeader h1 {
+    font-size: 1.3rem;
+  }
+
+  #pronósticoContainer h3 {
+    font-size: 1.1rem;
+  }
+
+  #pronósticoContainer .card-body {
+    padding: 0.8rem 0.6rem;
+  }
+
+  .list-group-item {
+    font-size: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-group-item span {
+    margin-top: 0.4rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animaciones minimalistas */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
