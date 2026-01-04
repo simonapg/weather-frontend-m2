@@ -18,22 +18,18 @@ function cargarCiudades() {
   
   ciudades.forEach(ciudad => {
     const card = document.createElement('div');
-    card.className = 'col-md-6 col-lg-4 mb-4';
+    card.className = 'col-12 col-md-6 col-lg-4';
     card.innerHTML = `
-      <article class="card ciudad-card h-100 shadow-sm cursor-pointer" onclick="verDetalle(${ciudad.id})">
+      <article class="card location-card h-100 shadow-sm" onclick="verDetalle(${ciudad.id})">
         <div class="card-body d-flex flex-column">
-          <div class="text-center mb-3">
-            <span class="clima-icono display-3">${ciudad.icono}</span>
-          </div>
-          <h5 class="card-title text-center">${ciudad.nombre}</h5>
-          <p class="card-text text-muted text-center small mb-3">${ciudad.pais}</p>
-          <div class="temperatura-container text-center mb-2">
-            <p class="temperatura display-4 m-0 text-primary">${ciudad.temperatura}°C</p>
-          </div>
-          <p class="card-text text-center text-secondary">${ciudad.estado}</p>
+          <div class="location-card__icon text-center mb-3">${ciudad.icono}</div>
+          <h3 class="location-card__name text-center">${ciudad.nombre}</h3>
+          <p class="location-card__country text-center">${ciudad.pais}</p>
+          <p class="location-card__temp text-center mb-1">${ciudad.temperatura}°C</p>
+          <p class="location-card__state text-center">${ciudad.estado}</p>
           <div class="mt-auto">
             <button class="btn btn-outline-primary btn-sm w-100" onclick="event.stopPropagation(); verDetalle(${ciudad.id})">
-              Ver Detalle
+              Ver detalle
             </button>
           </div>
         </div>
@@ -64,8 +60,9 @@ function cargarDetalle() {
   const detalleHeader = document.getElementById('detalleHeader');
   detalleHeader.innerHTML = `
     <div class="text-center mb-4">
-      <h1>${ciudad.nombre}</h1>
-      <p class="lead text-muted">${ciudad.pais}</p>
+      <p class="detail-header__eyebrow">Clima actual</p>
+      <h1 class="detail-header__title">${ciudad.nombre}</h1>
+      <p class="detail-header__subtitle">${ciudad.pais}</p>
     </div>
   `;
   
@@ -74,36 +71,39 @@ function cargarDetalle() {
   detalleActual.innerHTML = `
     <div class="row">
       <div class="col-md-6 mb-4">
-        <div class="card">
+        <div class="card detail-card">
           <div class="card-body">
-            <h5 class="card-title">Clima Actual</h5>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h2 class="detail-card__title">Clima actual</h2>
+              <span class="detail-card__chip">En vivo</span>
+            </div>
             <div class="text-center my-4">
-              <p class="display-1">${ciudad.icono}</p>
-              <p class="display-5">${ciudad.temperatura}°C</p>
-              <p class="lead">${ciudad.estado}</p>
+              <p class="detail-card__icon">${ciudad.icono}</p>
+              <p class="detail-card__temp">${ciudad.temperatura}°C</p>
+              <p class="detail-card__state">${ciudad.estado}</p>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-6 mb-4">
-        <div class="card">
+        <div class="card detail-card">
           <div class="card-body">
-            <h5 class="card-title">Detalles</h5>
+            <h2 class="detail-card__title">Detalles</h2>
             <ul class="list-group list-group-flush">
               <li class="list-group-item d-flex justify-content-between">
-                <strong>Temperatura:</strong>
+                <strong>Temperatura</strong>
                 <span>${ciudad.temperatura}°C</span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
-                <strong>Humedad:</strong>
+                <strong>Humedad</strong>
                 <span>${ciudad.humedad}%</span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
-                <strong>Velocidad del Viento:</strong>
+                <strong>Viento</strong>
                 <span>${ciudad.viento} km/h</span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
-                <strong>Coordenadas:</strong>
+                <strong>Coordenadas</strong>
                 <span class="small">${ciudad.coordenadas}</span>
               </li>
             </ul>
@@ -115,7 +115,7 @@ function cargarDetalle() {
   
   // Mostrar pronóstico semanal
   const pronósticoContainer = document.getElementById('pronósticoContainer');
-  pronósticoContainer.innerHTML = '<h3 class="mb-4">Pronóstico de la Semana</h3>';
+  pronósticoContainer.innerHTML = '<h3 class="forecast__title mb-4">Pronóstico de la semana</h3>';
   
   const pronósticoRow = document.createElement('div');
   pronósticoRow.className = 'row';
@@ -124,12 +124,12 @@ function cargarDetalle() {
     const diaCard = document.createElement('div');
     diaCard.className = 'col-6 col-md-4 col-lg-2 mb-3';
     diaCard.innerHTML = `
-      <div class="card text-center h-100">
+      <div class="card forecast-card text-center h-100">
         <div class="card-body">
-          <h6 class="card-title">${dia.dia}</h6>
-          <p class="display-5 my-2">${dia.icono}</p>
-          <p class="card-text">${dia.temp}°C</p>
-          <small class="text-muted">${dia.estado}</small>
+          <h6 class="forecast-card__day">${dia.dia}</h6>
+          <p class="forecast-card__icon">${dia.icono}</p>
+          <p class="forecast-card__temp">${dia.temp}°C</p>
+          <p class="forecast-card__state">${dia.estado}</p>
         </div>
       </div>
     `;

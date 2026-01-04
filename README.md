@@ -1,52 +1,60 @@
 # ClimaMundo Chile
 
-Una aplicación simple para ver el clima de las principales ciudades chilenas. Nada del otro mundo, pero funciona.
+Aplicación web minimalista para consultar el clima de las principales ciudades chilenas. Refactorizada con metodología BEM, SASS modular y diseño en escala de grises.
 
 **[Repositorio en GitHub](https://github.com/simonapg/weather-frontend-m2)**
 
 ## Cómo usarla
 
-1. Descomprimir el zip
-2. Abrir `index.html` en el navegador
-3. Hacer click en cualquier ciudad para ver sus detalles y el pronóstico de la semana
+1. Abrir `index.html` en el navegador
+2. Hacer click en cualquier ciudad para ver su detalle y pronóstico semanal
+3. Usar el botón "Volver al inicio" para regresar al listado
 
-## Qué tiene
+## Características
 
-- 12 ciudades chilenas (Santiago, Valparaíso, La Serena, Antofagasta, Iquique, Temuco, Puerto Montt, Puerto Varas, Valdivia, Concepción, Osorno, Punta Arenas)
+- 12 localidades chilenas con datos de clima simulados
 - Temperatura, humedad, viento y coordenadas para cada ciudad
-- Pronóstico de 7 días
-- Se adapta bien a cualquier tamaño de pantalla (computadora, tablet, celular)
-- Funciona sin conexión a internet
+- Pronóstico de 7 días con íconos y estados
+- Responsive: 1 columna en móvil (≤420px), múltiples columnas en desktop (≥1024px)
+- Diseño minimalista monocromático
 
-## Tecnologías usadas
+## Tecnologías
 
-- HTML5 con estructura semántica
-- CSS3 con flexbox y variables
-- JavaScript vanilla (sin librerías raras)
-- Bootstrap 5 para el grid y componentes
+- HTML5 semántico con nomenclatura BEM
+- SASS modularizado (variables, mixins, parciales)
+- JavaScript vanilla para navegación y renderizado
+- Bootstrap 5 grid system (col-12/col-md-6/col-lg-4)
 
 ## Estructura
 
 ```
 index.html          - Página principal con listado de ciudades
-detalle.html        - Página con detalles de una ciudad
-css/styles.css      - Estilos
-js/data.js          - Los datos de las ciudades
-js/script.js        - La lógica de la app
+detalle.html        - Vista ampliada con pronóstico semanal
+css/main.css        - Estilos compilados desde SASS (no editar)
+scss/               - Código fuente SASS
+  base/
+    _variables.scss - Paleta, tipografía, espaciados
+    _mixins.scss    - Mixins reutilizables
+  layout/
+    _layout.scss    - Navbar, hero, secciones, footer
+  components/
+    _components.scss - Cards, botones, detalle
+  main.scss         - Punto de entrada
+js/
+  data.js           - Mock de 12 ciudades con pronóstico
+  script.js         - Lógica de renderizado y navegación
 ```
 
-## Responsive
+## Compilar SASS
 
-Funciona bien en móviles (desde 420px), tablets y computadoras. El navbar se colapsa automáticamente en pantallas pequeñas.
+```bash
+# Build único
+sass scss/main.scss css/main.css
 
-## Cómo funciona
+# Watch mode
+sass --watch scss/main.scss:css/main.css
+```
 
-Basicamente clickeas una ciudad en la home, se guarda en localStorage cual seleccionaste, te lleva a la página de detalle donde ves más info, y hay un botón para volver.
-
-Cada ciudad tiene:
-
-- Ícono del clima (emojis)
-- Temperatura actual
 - Humedad
 - Velocidad del viento
 - Coordenadas geográficas

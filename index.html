@@ -9,23 +9,24 @@
   
   <!-- Bootstrap CDN CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Estilos compilados desde SASS -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="weather-app">
   <!-- Header y Navbar -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <strong>�🇱 ClimaMundo Chile</strong>
+  <header class="weather-app__header">
+    <nav class="navbar navbar-expand-lg navbar-light weather-navbar">
+      <div class="container">
+        <a class="navbar-brand weather-navbar__brand" href="index.html">
+          <span class="weather-navbar__logo">CL</span>
+          <span class="fw-bold">ClimaMundo Chile</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto weather-navbar__links">
             <li class="nav-item">
               <a class="nav-link active" href="index.html">Inicio</a>
             </li>
@@ -39,57 +40,79 @@
   </header>
 
   <!-- Sección principal -->
-  <main>
-    <!-- Sección Hero -->
-    <section class="hero-section">
+  <main class="weather-app__body">
+    <!-- Hero -->
+    <section class="hero">
       <div class="container">
-        <h2>Clima de Chile en Tiempo Real</h2>
-        <p>Explora el clima actual en las principales localidades de Chile. Selecciona una ciudad para ver su pronóstico semanal detallado.</p>
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <p class="hero__kicker">Datos locales, diseño claro</p>
+            <h1 class="hero__title">Clima de Chile en tiempo real</h1>
+            <p class="hero__subtitle">Explora las principales localidades chilenas. Revisa el estado actual y navega al detalle para consultar el pronóstico semanal.</p>
+            <div class="mt-3">
+              <a class="btn btn-primary btn-lg" href="#ciudades">Ver localidades</a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero__panel">
+              <h2 class="hero__panel-title">Condición destacada</h2>
+              <p class="hero__panel-location">Santiago, CL</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <p class="hero__panel-temp">28°C</p>
+                  <p class="hero__panel-state">Despejado</p>
+                </div>
+                <div class="hero__panel-meta text-end">
+                  <span class="hero__panel-chip">Humedad 45%</span>
+                  <span class="hero__panel-chip">Viento 8 km/h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contenedor de ciudades -->
-    <section id="ciudades" class="py-4">
+    <!-- Grid de ciudades -->
+    <section id="ciudades" class="section">
       <div class="container">
-        <h2 class="mb-4 text-center" style="font-weight: 700; color: #212529;">Localidades Chilenas</h2>
-        <div class="row" id="ciudadesContainer">
-          <!-- Las ciudades se cargarán aquí mediante JavaScript -->
+        <div class="section__header">
+          <div>
+            <p class="section__kicker">Localidades</p>
+            <h2 class="section__title">Clima actual en Chile</h2>
+          </div>
+        </div>
+        <div class="row gy-4" id="ciudadesContainer" aria-live="polite">
+          <!-- Se inyectan las cards desde script.js -->
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer class="weather-footer">
     <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-4 mb-4">
-          <h5>ClimaMundo Chile</h5>
-          <p>Tu fuente confiable de información climática de Chile.</p>
+      <div class="row gy-4 mb-4">
+        <div class="col-md-4">
+          <h5 class="weather-footer__title">ClimaMundo Chile</h5>
+          <p class="weather-footer__text">Tu fuente confiable de información climática local.</p>
         </div>
-        <div class="col-md-4 mb-4">
-          <h5>Navegación</h5>
-          <ul class="list-unstyled">
+        <div class="col-md-4">
+          <h5 class="weather-footer__title">Navegación</h5>
+          <ul class="list-unstyled weather-footer__list">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="#ciudades">Ciudades</a></li>
           </ul>
         </div>
-        <div class="col-md-4 mb-4">
-          <h5>Síguenos</h5>
-          <div class="social-icons">
-            <a href="#" title="Facebook">f</a>
-            <a href="#" title="Twitter">𝕏</a>
-            <a href="#" title="Instagram">📷</a>
-          </div>
+        <div class="col-md-4">
+          <h5 class="weather-footer__title">Créditos</h5>
+          <p class="weather-footer__text">Proyecto educativo. Módulo 2 → refactor UI con SASS y Bootstrap.</p>
         </div>
       </div>
       <hr class="my-4">
       <div class="row">
         <div class="col-12 text-center">
-          <p class="mb-0">
-            &copy; 2026 ClimaMundo Chile. Todos los derechos reservados. 
-            | Desarrollado con HTML5, Bootstrap y JavaScript
-          </p>
+          <p class="mb-0 weather-footer__meta">&copy; 2026 ClimaMundo Chile. Diseño modular listo para API.</p>
         </div>
       </div>
     </div>

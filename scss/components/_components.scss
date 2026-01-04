@@ -1,0 +1,214 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+@use 'sass:color';
+
+// Cards de ciudades minimalistas
+.location-card {
+  @include card-surface;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &__icon {
+    font-size: 2.8rem;
+    opacity: 0.9;
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: $color-text;
+    letter-spacing: 0.02em;
+  }
+
+  &__country {
+    color: $color-text-muted;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__temp {
+    font-size: 2.5rem;
+    font-weight: 200;
+    color: $color-primary;
+    letter-spacing: -0.02em;
+  }
+
+  &__state {
+    color: $color-text-muted;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+// Header del detalle
+.detail-header {
+  @include card-surface;
+  background-color: $color-primary;
+  color: $color-surface;
+  text-align: center;
+  padding: $space-xl;
+  margin-bottom: $space-lg;
+
+  &__eyebrow {
+    @include kicker;
+    color: $color-surface;
+    margin-bottom: $space-xs;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: $space-xxs;
+  }
+
+  &__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+}
+
+.detail-card {
+  @include card-surface;
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  &__chip {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: $radius-sm;
+    background-color: $color-surface-muted;
+    color: $color-text;
+    font-size: 0.85rem;
+  }
+
+  &__icon {
+    font-size: 2.8rem;
+    margin: 0;
+  }
+
+  &__temp {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: $space-xs 0;
+    color: $color-primary;
+  }
+
+  &__state {
+    color: $color-text-muted;
+    margin: 0;
+  }
+}
+
+.list-group-item {
+  border-color: $color-border;
+}
+
+// Pronóstico
+.forecast {
+  border-top: 1px solid $color-border;
+  padding-top: $space-lg;
+  margin-top: $space-lg;
+
+  &__title {
+    font-weight: 800;
+    color: $color-text;
+  }
+}
+
+.forecast-card {
+  @include card-surface;
+
+  &__day {
+    font-weight: 700;
+    margin-bottom: $space-xxs;
+  }
+
+  &__icon {
+    font-size: 1.6rem;
+    margin: $space-xxs 0;
+  }
+
+  &__temp {
+    font-weight: 700;
+    color: $color-primary;
+    margin: 0;
+  }
+
+  &__state {
+    color: $color-text-muted;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+// Botones minimalistas
+.btn-primary {
+  background-color: $color-primary;
+  border: 2px solid $color-primary;
+  color: $color-surface;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 14px 32px;
+  border-radius: 0;
+}
+
+.btn-primary:hover {
+  background-color: $color-surface;
+  color: $color-primary;
+  border-color: $color-primary;
+}
+
+.btn-outline-primary {
+  color: $color-primary;
+  border: 2px solid $color-primary;
+  background-color: transparent;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  border-radius: 0;
+}
+
+.btn-outline-primary:hover {
+  background-color: $color-primary;
+  color: $color-surface;
+}
+
+.btn-secondary {
+  background-color: $color-surface;
+  border: 2px solid $color-border;
+  color: $color-text;
+  border-radius: 0;
+}
+
+.btn-secondary:hover {
+  border-color: $color-primary;
+  color: $color-primary;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .location-card__temp {
+    font-size: 1.6rem;
+  }
+
+  .detail-header {
+    padding: $space-lg;
+  }
+
+  .hero__panel {
+    padding: $space-lg;
+  }
+}

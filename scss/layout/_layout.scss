@@ -1,0 +1,250 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: $color-surface;
+}
+
+main {
+  flex: 1;
+}
+
+// Navbar minimalista
+.weather-navbar {
+  background-color: $color-surface;
+  border-bottom: 2px solid $color-border;
+  padding: 20px 0;
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    color: $color-primary;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  &__logo {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $color-primary;
+    background-color: transparent;
+    font-weight: 700;
+    color: $color-primary;
+    font-size: 0.75rem;
+  }
+
+  &__links .nav-link {
+    color: $color-text-muted;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__links .nav-link.active,
+  &__links .nav-link:hover {
+    color: $color-primary;
+  }
+}
+
+// Hero minimalista
+.hero {
+  padding: 80px 0 64px;
+  border-bottom: 2px solid $color-border;
+
+  &__kicker {
+    @include kicker;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: $color-primary;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    max-width: 540px;
+    color: $color-text-muted;
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  &__panel {
+    @include card-surface;
+    padding: 40px;
+  }
+
+  &__panel-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: $color-text;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__panel-location {
+    color: $color-text-muted;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+  }
+
+  &__panel-temp {
+    font-size: 3.5rem;
+    font-weight: 200;
+    margin: 0;
+    letter-spacing: -0.03em;
+  }
+
+  &__panel-state {
+    color: $color-text-muted;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+
+  &__panel-meta {
+    display: grid;
+    gap: 12px;
+  }
+
+  &__panel-chip {
+    display: inline-block;
+    padding: 8px 0;
+    border-bottom: 1px solid $color-border;
+    color: $color-text;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+// Secciones genéricas
+.section {
+  padding: $space-xl 0;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+  }
+
+  &__kicker {
+    @include kicker;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: $space-xs 0;
+    color: $color-primary;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-sm;
+    align-items: center;
+  }
+
+  &--muted {
+    background-color: $color-surface-muted;
+  }
+}
+
+// Feature grid
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $space-md;
+
+  &__item {
+    @include card-surface;
+    padding: $space-lg;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-bottom: $space-xs;
+  }
+
+  &__text {
+    color: $color-text-muted;
+    margin: 0;
+  }
+}
+
+// Footer
+.weather-footer {
+  margin-top: auto;
+  background-color: $color-surface-muted;
+  border-top: 1px solid $color-border;
+  padding: $space-xl 0 $space-lg;
+
+  &__title {
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: $space-xs;
+  }
+
+  &__text {
+    color: $color-text-muted;
+    margin: 0 0 $space-sm;
+  }
+
+  &__list a {
+    color: $color-text;
+    text-decoration: none;
+  }
+
+  &__list a:hover {
+    color: $color-accent;
+  }
+
+  &__meta {
+    color: $color-text-muted;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .hero {
+    padding: $space-xl 0 $space-lg;
+  }
+
+  .hero__title {
+    font-size: 1.8rem;
+  }
+}

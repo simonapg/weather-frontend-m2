@@ -1,0 +1,18 @@
+@use 'variables' as *;
+
+// Superficie para cards minimalista
+@mixin card-surface {
+  background-color: $color-surface;
+  border: 2px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+}
+
+// Texto de sección pequeño
+@mixin kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: $color-text-muted;
+}
