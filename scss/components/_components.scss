@@ -1,8 +1,6 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
-@use 'sass:color';
 
-// Cards de ciudades minimalistas
 .location-card {
   @include card-surface;
   transition: border-color 0.2s ease;
@@ -33,6 +31,30 @@
     letter-spacing: 0.1em;
   }
 
+  &__date-block {
+    margin-bottom: $space-md;
+    padding: $space-sm;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__date-label {
+    margin-bottom: $space-xxs;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $color-text-muted;
+  }
+
+  &__date {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $color-text;
+    line-height: 1.4;
+  }
+
   &__temp {
     font-size: 2.5rem;
     font-weight: 200;
@@ -47,9 +69,9 @@
   }
 }
 
-// Header del detalle
 .detail-header {
-  @include card-surface;
+  border: 2px solid $color-primary;
+  border-radius: $radius-md;
   background-color: $color-primary;
   color: $color-surface;
   text-align: center;
@@ -57,7 +79,10 @@
   margin-bottom: $space-lg;
 
   &__eyebrow {
-    @include kicker;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    font-size: 0.7rem;
     color: $color-surface;
     margin-bottom: $space-xs;
   }
@@ -114,7 +139,6 @@
   border-color: $color-border;
 }
 
-// Pronóstico
 .forecast {
   border-top: 1px solid $color-border;
   padding-top: $space-lg;
@@ -132,6 +156,13 @@
   &__day {
     font-weight: 700;
     margin-bottom: $space-xxs;
+  }
+
+  &__date-text {
+    margin-bottom: $space-sm;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $color-text;
   }
 
   &__icon {
@@ -152,7 +183,6 @@
   }
 }
 
-// Botones minimalistas
 .btn-primary {
   background-color: $color-primary;
   border: 2px solid $color-primary;

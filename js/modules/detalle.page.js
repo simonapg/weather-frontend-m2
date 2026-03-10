@@ -1,22 +1,27 @@
-import { calcularEstadisticasSemana } from './clima.estadisticas.js';
-import { obtenerLugar } from './lugares.service.js';
+import { obtenerIconoPorEstado } from './weather.utils.js';
 
-const ICONOS_ESTADO = {
-  Despejado: '☀️',
-  Nublado: '☁️',
-  Lluvioso: '🌧️',
-  Ventoso: '💨'
-};
-
-export function inicializarDetalle() {
+export async function inicializarDetalle(weatherApp) {
   const detalleContainer = document.getElementById('detalleContainer');
 
   if (!detalleContainer) {
     return;
   }
 
+  mostrarCargandoDetalle();
+
   const idDesdeUrl = obtenerIdDesdeUrl();
-  const lugar = obtenerLugar(idDesdeUrl || 1);
+  let lugar = null;
+
+  try {
+    if (!weatherApp) {
+      throw new Error('WeatherApp no disponible');
+    }
+
+    lugar = await weatherApp.cargarDetalleLugar(idDesdeUrl || 1);
+  } catch (error) {
+    mostrarErrorDetalle('Error al cargar los datos del clima para este lugar.');
+    return;
+  }
 
   if (!lugar) {
     window.location.href = 'index.html';
@@ -25,7 +30,7 @@ export function inicializarDetalle() {
 
   renderizarCabecera(lugar);
   renderizarDetalleActual(lugar);
-  renderizarPronosticoYEstadisticas(lugar);
+  renderizarPronosticoYEstadisticas(lugar, weatherApp);
   prepararBotonVolver();
 }
 
@@ -42,13 +47,14 @@ function obtenerIdDesdeUrl() {
 
 function renderizarCabecera(lugar) {
   document.title = `${lugar.nombre} - ClimaMundo Chile`;
+  const fechaActual = lugar.pronosticoSemanal?.[0];
 
   const detalleHeader = document.getElementById('detalleHeader');
   detalleHeader.innerHTML = `
     <div class="text-center mb-4">
       <p class="detail-header__eyebrow">Clima actual</p>
       <h1 class="detail-header__title">${lugar.nombre}</h1>
-      <p class="detail-header__subtitle">Chile</p>
+      <p class="detail-header__subtitle">Chile${fechaActual ? ` · ${fechaActual.fechaEtiqueta}` : ''}</p>
     </div>
   `;
 }
@@ -102,9 +108,10 @@ function renderizarDetalleActual(lugar) {
   `;
 }
 
-function renderizarPronosticoYEstadisticas(lugar) {
+function renderizarPronosticoYEstadisticas(lugar, weatherApp) {
   const pronosticoContainer = document.getElementById('pronosticoContainer');
-  const estadisticas = calcularEstadisticasSemana(lugar.pronosticoSemanal);
+  const estadisticas = weatherApp.calcularEstadisticas(lugar.pronosticoSemanal);
+  const alertas = weatherApp.generarAlertas(estadisticas, lugar.pronosticoSemanal);
 
   pronosticoContainer.innerHTML = `
     <h3 class="forecast__title mb-4">Pronostico de la semana</h3>
@@ -141,6 +148,9 @@ function renderizarPronosticoYEstadisticas(lugar) {
           <div class="alert alert-secondary mb-0" role="status">
             ${estadisticas.resumen}
           </div>
+
+          <h4 class="h6 mt-4">Alertas de clima</h4>
+          <ul class="list-group list-group-flush" id="listaAlertasClima"></ul>
         </div>
       </div>
     </section>
@@ -156,7 +166,8 @@ function renderizarPronosticoYEstadisticas(lugar) {
       <div class="card forecast-card text-center h-100">
         <div class="card-body">
           <h6 class="forecast-card__day">${dia.dia}</h6>
-          <p class="forecast-card__icon">${ICONOS_ESTADO[dia.estado] || '🌤️'}</p>
+          <p class="forecast-card__date-text">${dia.fechaLarga || dia.fechaIso || ''}</p>
+          <p class="forecast-card__icon">${obtenerIconoPorEstado(dia.estado)}</p>
           <p class="forecast-card__temp mb-1">Min: ${dia.min}°C</p>
           <p class="forecast-card__temp mb-1">Max: ${dia.max}°C</p>
           <p class="forecast-card__state">${dia.estado}</p>
@@ -183,6 +194,16 @@ function renderizarPronosticoYEstadisticas(lugar) {
 
     conteoEstados.appendChild(item);
   }
+
+  const listaAlertas = document.getElementById('listaAlertasClima');
+  for (let i = 0; i < alertas.length; i += 1) {
+    const alerta = alertas[i];
+    const item = document.createElement('li');
+
+    item.className = 'list-group-item';
+    item.textContent = alerta;
+    listaAlertas.appendChild(item);
+  }
 }
 
 function prepararBotonVolver() {
@@ -196,3 +217,25 @@ function prepararBotonVolver() {
     window.location.href = 'index.html';
   });
 }
+
+function mostrarCargandoDetalle() {
+  const detalleHeader = document.getElementById('detalleHeader');
+  const detalleActual = document.getElementById('detalleActual');
+  const pronosticoContainer = document.getElementById('pronosticoContainer');
+
+  detalleHeader.innerHTML = '<div class="alert alert-info" role="status">Cargando lugar...</div>';
+  detalleActual.innerHTML = '';
+  pronosticoContainer.innerHTML = '';
+}
+
+function mostrarErrorDetalle(mensaje = 'Error al cargar los datos') {
+  const detalleHeader = document.getElementById('detalleHeader');
+  const detalleActual = document.getElementById('detalleActual');
+  const pronosticoContainer = document.getElementById('pronosticoContainer');
+
+  detalleHeader.innerHTML = `<div class="alert alert-danger" role="alert">${mensaje}</div>`;
+  detalleActual.innerHTML = '';
+  pronosticoContainer.innerHTML = '';
+}
+
+

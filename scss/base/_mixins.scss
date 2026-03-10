@@ -1,6 +1,5 @@
 @use 'variables' as *;
 
-// Superficie para cards minimalista
 @mixin card-surface {
   background-color: $color-surface;
   border: 2px solid $color-border;
@@ -8,7 +7,6 @@
   box-shadow: $shadow-card;
 }
 
-// Texto de sección pequeño
 @mixin kicker {
   text-transform: uppercase;
   letter-spacing: 0.15em;

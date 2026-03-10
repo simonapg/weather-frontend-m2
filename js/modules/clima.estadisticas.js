@@ -1,7 +1,4 @@
-function redondear(valor, decimales = 1) {
-  const factor = 10 ** decimales;
-  return Math.round(valor * factor) / factor;
-}
+import { redondear } from './weather.utils.js';
 
 export function calcularEstadisticasSemana(pronosticoSemanal) {
   if (!Array.isArray(pronosticoSemanal) || pronosticoSemanal.length === 0) {

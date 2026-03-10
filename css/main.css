@@ -103,8 +103,14 @@ main {
 }
 .hero__panel-location {
   color: #737373;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
+}
+.hero__panel-date {
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 .hero__panel-temp {
   font-size: 3.5rem;
@@ -153,40 +159,6 @@ main {
   font-weight: 800;
   margin: 8px 0;
   color: #000000;
-}
-.section__subtitle {
-  color: #737373;
-  max-width: 640px;
-  margin: 0;
-}
-.section__actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.section--muted {
-  background-color: #fafafa;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-.feature-grid__item {
-  background-color: #ffffff;
-  border: 2px solid #e5e5e5;
-  border-radius: 2px;
-  box-shadow: none;
-  padding: 24px;
-}
-.feature-grid__title {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.feature-grid__text {
-  color: #737373;
-  margin: 0;
 }
 
 .weather-footer {
@@ -253,6 +225,27 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+.location-card__date-block {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+.location-card__date-label {
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #737373;
+}
+.location-card__date {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
 .location-card__temp {
   font-size: 2.5rem;
   font-weight: 200;
@@ -266,10 +259,8 @@ main {
 }
 
 .detail-header {
-  background-color: #ffffff;
-  border: 2px solid #e5e5e5;
+  border: 2px solid #000000;
   border-radius: 2px;
-  box-shadow: none;
   background-color: #000000;
   color: #ffffff;
   text-align: center;
@@ -281,7 +272,6 @@ main {
   letter-spacing: 0.15em;
   font-weight: 600;
   font-size: 0.7rem;
-  color: #737373;
   color: #ffffff;
   margin-bottom: 8px;
 }
@@ -352,6 +342,12 @@ main {
 .forecast-card__day {
   font-weight: 700;
   margin-bottom: 4px;
+}
+.forecast-card__date-text {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 .forecast-card__icon {
   font-size: 1.6rem;

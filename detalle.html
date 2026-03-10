@@ -7,57 +7,16 @@
   <meta name="author" content="Desarrollador Web">
   <title>Detalle de Clima - ClimaMundo Chile</title>
   
-  <!-- Bootstrap CDN CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Estilos compilados desde SASS -->
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="weather-app">
-  <!-- Header y Navbar -->
-  <header class="weather-app__header">
-    <nav class="navbar navbar-expand-lg navbar-light weather-navbar">
-      <div class="container">
-        <a class="navbar-brand weather-navbar__brand" href="index.html">
-          <span class="weather-navbar__logo">CL</span>
-          <span class="fw-bold">ClimaMundo Chile</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto weather-navbar__links">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#ciudades">Ciudades</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Sección principal -->
+<body class="weather-app" data-page="detalle">
+  <header class="weather-app__header" id="siteHeader"></header>
   <main class="weather-app__body">
     <div class="container" id="detalleContainer">
-      <!-- Encabezado dinámico -->
-      <section id="detalleHeader" class="detail-header">
-        <!-- Se carga dinámicamente -->
-      </section>
-
-      <!-- Información actual y detalles -->
-      <section id="detalleActual" class="detail-grid">
-        <!-- Se carga dinámicamente -->
-      </section>
-
-      <!-- Pronóstico semanal -->
-      <section id="pronosticoContainer" class="forecast">
-        <!-- Se carga dinámicamente -->
-      </section>
-
-      <!-- Botón de retorno -->
+      <section id="detalleHeader" class="detail-header"></section>
+      <section id="detalleActual" class="detail-grid"></section>
+      <section id="pronosticoContainer" class="forecast"></section>
       <div class="text-center my-5">
         <button class="btn btn-primary btn-lg" id="botonVolverInicio">
           Volver al inicio
@@ -65,40 +24,8 @@
       </div>
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="weather-footer">
-    <div class="container">
-      <div class="row gy-4 mb-4">
-        <div class="col-md-4">
-          <h5 class="weather-footer__title">ClimaMundo Chile</h5>
-          <p class="weather-footer__text">Tu fuente confiable de información climática local.</p>
-        </div>
-        <div class="col-md-4">
-          <h5 class="weather-footer__title">Navegación</h5>
-          <ul class="list-unstyled weather-footer__list">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="index.html#ciudades">Ciudades</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5 class="weather-footer__title">Créditos</h5>
-          <p class="weather-footer__text">Proyecto educativo. Módulo 2 → refactor UI con SASS y Bootstrap.</p>
-        </div>
-      </div>
-      <hr class="my-4">
-      <div class="row">
-        <div class="col-12 text-center">
-          <p class="mb-0 weather-footer__meta">&copy; 2026 ClimaMundo Chile. Diseño modular listo para API.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap CDN JS -->
+  <footer class="weather-footer" id="siteFooter"></footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Scripts personalizados -->
   <script type="module" src="js/script.js"></script>
 </body>
 </html>

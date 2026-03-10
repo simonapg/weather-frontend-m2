@@ -24,7 +24,6 @@ main {
   flex: 1;
 }
 
-// Navbar minimalista
 .weather-navbar {
   background-color: $color-surface;
   border-bottom: 2px solid $color-border;
@@ -68,7 +67,6 @@ main {
   }
 }
 
-// Hero minimalista
 .hero {
   padding: 80px 0 64px;
   border-bottom: 2px solid $color-border;
@@ -111,8 +109,15 @@ main {
 
   &__panel-location {
     color: $color-text-muted;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     font-size: 0.9rem;
+  }
+
+  &__panel-date {
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $color-text;
   }
 
   &__panel-temp {
@@ -143,7 +148,6 @@ main {
   }
 }
 
-// Secciones genéricas
 .section {
   padding: $space-xl 0;
 
@@ -167,46 +171,8 @@ main {
     color: $color-primary;
   }
 
-  &__subtitle {
-    color: $color-text-muted;
-    max-width: 640px;
-    margin: 0;
-  }
-
-  &__actions {
-    display: flex;
-    gap: $space-sm;
-    align-items: center;
-  }
-
-  &--muted {
-    background-color: $color-surface-muted;
-  }
 }
 
-// Feature grid
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: $space-md;
-
-  &__item {
-    @include card-surface;
-    padding: $space-lg;
-  }
-
-  &__title {
-    font-weight: 700;
-    margin-bottom: $space-xs;
-  }
-
-  &__text {
-    color: $color-text-muted;
-    margin: 0;
-  }
-}
-
-// Footer
 .weather-footer {
   margin-top: auto;
   background-color: $color-surface-muted;
