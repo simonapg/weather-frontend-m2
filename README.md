@@ -1,129 +1,43 @@
 # ClimaMundo Chile
 
-Aplicación web minimalista para consultar el clima de las principales ciudades chilenas. Refactorizada con metodología BEM, SASS modular y diseño en escala de grises.
+App web simple para practicar JavaScript con datos de clima.
+El foco esta en la logica: trabajar arreglos y objetos, usar ciclos y condicionales, calcular estadisticas y pintar todo en el DOM.
 
-**[Repositorio en GitHub](https://github.com/simonapg/weather-frontend-m2)**
+## Que hace
 
-## Cómo usarla
+- Muestra 12 lugares en Home con su clima actual.
+- Permite entrar al detalle de cada lugar.
+- En detalle muestra pronostico semanal (dia, min, max, estado).
+- Calcula en JavaScript:
+  - minima, maxima y promedio semanal,
+  - cantidad de dias por tipo de clima,
+  - resumen textual de la semana.
 
-1. Abrir `index.html` en el navegador
-2. Hacer click en cualquier ciudad para ver su detalle y pronóstico semanal
-3. Usar el botón "Volver al inicio" para regresar al listado
+## Como esta organizado
 
-## Características
+- `js/data.js`: datos mock de lugares y pronostico.
+- `js/modules/lugares.service.js`: busqueda de lugares.
+- `js/modules/clima.estadisticas.js`: calculos semanales.
+- `js/modules/home.page.js`: render de Home.
+- `js/modules/detalle.page.js`: render de detalle.
+- `js/script.js`: punto de entrada (main).
 
-- 12 localidades chilenas con datos de clima simulados
-- Temperatura, humedad, viento y coordenadas para cada ciudad
-- Pronóstico de 7 días con íconos y estados
-- Responsive: 1 columna en móvil (≤420px), múltiples columnas en desktop (≥1024px)
-- Diseño minimalista monocromático
+## Como correrlo
 
-## Tecnologías
+1. Abrir `index.html`.
+2. Elegir un lugar.
+3. Ver el detalle y las estadisticas semanales.
 
-- HTML5 semántico con nomenclatura BEM
-- SASS modularizado (variables, mixins, parciales)
-- JavaScript vanilla para navegación y renderizado
-- Bootstrap 5 grid system (col-12/col-md-6/col-lg-4)
+## SCSS
 
-## Estructura
+- Compilar una vez: `sass scss/main.scss css/main.css`
+- Modo watch: `sass --watch scss/main.scss:css/main.css`
 
-```
-index.html          - Página principal con listado de ciudades
-detalle.html        - Vista ampliada con pronóstico semanal
-css/main.css        - Estilos compilados desde SASS (no editar)
-scss/               - Código fuente SASS
-  base/
-    _variables.scss - Paleta, tipografía, espaciados
-    _mixins.scss    - Mixins reutilizables
-  layout/
-    _layout.scss    - Navbar, hero, secciones, footer
-  components/
-    _components.scss - Cards, botones, detalle
-  main.scss         - Punto de entrada
-js/
-  data.js           - Mock de 12 ciudades con pronóstico
-  script.js         - Lógica de renderizado y navegación
-```
+Si falla el comando `sass`, usar:
 
-## Compilar SASS
+- `npm install -g sass`
+- o `npx sass --watch scss/main.scss:css/main.css`
 
-```bash
-# Build único
-sass scss/main.scss css/main.css
+## Stack
 
-# Watch mode
-sass --watch scss/main.scss:css/main.css
-```
-
-- Humedad
-- Velocidad del viento
-- Coordenadas geográficas
-- Pronóstico para los próximos 7 días
-
-## Notas
-
-Los datos del clima son ficticios pero realistas. Si quisieras datos reales tendrías que conectar una API de verdad.
-
-El código está comentado así que se entiende fácilmente.
-
----
-
-Hecho con HTML, CSS y JavaScript vanilla. Sin frameworks raros ni dependencias externas.
-
-## Funcionalidades JavaScript
-
-### Evento DOMContentLoaded
-
-- Detecta si es página de inicio o detalle
-- Carga contenido apropiado
-
-### Función cargarCiudades()
-
-- Renderiza todas las ciudades como cards
-- Añade eventos click a cada card
-- Utiliza Bootstrap grid system
-
-### Función verDetalle(id)
-
-- Guarda la ciudad seleccionada en localStorage
-- Navega a la página de detalle
-
-### Función cargarDetalle()
-
-- Recupera la ciudad desde localStorage
-- Muestra información actual ampliada
-- Renderiza pronóstico semanal en cards
-
-### Función volverAInicio()
-
-- Limpia la selección
-- Navega a la página de inicio
-
-## Optimizaciones Realizadas
-
-- Código modular y reutilizable
-- Eficiencia en la manipulación del DOM
-- Carga de Bootstrap por CDN (sin instalar localmente)
-- Estilos optimizados con variables CSS
-- Animaciones suaves sin afectar rendimiento
-
-## Navegadores Soportados
-
-- Chrome/Chromium (v90+)
-- Firefox (v88+)
-- Safari (v14+)
-- Edge (v90+)
-
-## Autor
-
-Proyecto desarrollado como ejercicio educativo de HTML5, CSS3, JavaScript y Bootstrap.
-
-## Licencia
-
-Libre para uso educativo y personal.
-
----
-
-**Versión**: 1.0.0  
-**Fecha**: Enero 2026  
-**Estado**: MVP Completo
+HTML5, SCSS, JavaScript (ES Modules) y Bootstrap 5.
